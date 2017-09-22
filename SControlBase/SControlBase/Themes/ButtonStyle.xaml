@@ -105,4 +105,82 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    <Style x:Key="LoginButton" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <LinearGradientBrush x:Key="ProgressBrush" >
+                            <GradientStop Color="White" Offset="0"/>
+                            <GradientStop Color="#eb4b4b" Offset=".4"/>
+                            <GradientStop Color="White" Offset=".5"/>
+                            <GradientStop Color="#eb4b4b" Offset="1"/>
+                        </LinearGradientBrush>
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <TextBlock x:Name="txt" Text="{TemplateBinding Content}" Width="{TemplateBinding Width}" 
+                                   Height="{TemplateBinding Height}" Background="#eb4b4b" RenderTransformOrigin=".5,.5" >
+                            <TextBlock.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1"></ScaleTransform>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <Ellipse x:Name="ellipse" Height="{TemplateBinding Height}" Width="{TemplateBinding Height}" 
+                                 VerticalAlignment="Center" RenderTransformOrigin=".5,.5">
+                            <Ellipse.Fill>
+                                <SolidColorBrush Color="#eb4b4b" Opacity="1"></SolidColorBrush>
+                            </Ellipse.Fill>
+                            <Ellipse.RenderTransform>
+                                <ScaleTransform ScaleX="0" ScaleY="0"></ScaleTransform>
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+                        <Ellipse x:Name="tranellipse" Height="10" Width="10" Stroke="{DynamicResource ProgressBrush}"
+                                 VerticalAlignment="Center" RenderTransformOrigin=".5 ,.5">
+                            <Ellipse.RenderTransform>
+                                <RotateTransform Angle="00"></RotateTransform>
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="tranellipse"
+                                                     Storyboard.TargetProperty="RenderTransform.Angle" 
+                                                     RepeatBehavior="Forever"
+                                                     From="00" To="359" Duration="0:0:0.75" />
+                                        
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse" 
+                                                                       Storyboard.TargetProperty="RenderTransform.ScaleX">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ellipse"
+                                                                       Storyboard.TargetProperty="RenderTransform.ScaleY">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="txt" 
+                                                                       Storyboard.TargetProperty="RenderTransform.ScaleX">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"></EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="txt"
+                                                                       Storyboard.TargetProperty="RenderTransform.ScaleY">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"></EasingDoubleKeyFrame>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

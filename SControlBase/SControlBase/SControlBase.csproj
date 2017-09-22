@@ -103,6 +103,7 @@
     <Compile Include="HintProxyFabric.TextBox.cs" />
     <Compile Include="Interface\IHintProxy.cs" />
     <Compile Include="NotEmptyValidationRules.cs" />
+    <Compile Include="RenderButton.cs" />
     <Compile Include="Ripple.cs" />
     <Compile Include="RippleAssist.cs" />
     <Compile Include="ShadowAssist.cs" />

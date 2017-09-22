@@ -4,10 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SControlBase.Demo"
-              xmlns:wpf="clr-namespace:SControlBase"
+             xmlns:wpf="clr-namespace:SControlBase"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="White">
+    <Grid Background="AliceBlue">
         <Button Content="返回" Command="{x:Static wpf:Transitioner.MovePreviousCommand}" Height="30" Width="50"/>
         <Button Content="下个" Command="{x:Static wpf:Transitioner.MoveNextCommand}" Height="30" Width="50" Margin="120 0 0 0"></Button>
     </Grid>

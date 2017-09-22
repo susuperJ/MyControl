@@ -8,9 +8,18 @@
              
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="AliceBlue">
-        <Button Command="{x:Static wpf:Transitioner.MoveNextCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Content="demo" Height="30" Width="50">
+    <UserControl.Resources>
+        <ResourceDictionary >
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/SControlBase;component/Themes/ButtonStyle.xaml"></ResourceDictionary>
+            <ResourceDictionary Source="pack://application:,,,/SControlBase;component/Themes/ScheduleSliderStyle.xaml"></ResourceDictionary>
+        </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Background="White">
+        <wpf:RenderButton   
+                HorizontalAlignment="Center" VerticalAlignment="Center" Background="#eb4b4b" Content="demo" Height="30" Width="150">
            
-        </Button>
+        </wpf:RenderButton>
     </Grid>
 </UserControl>

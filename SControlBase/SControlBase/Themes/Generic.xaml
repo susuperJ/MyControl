@@ -198,7 +198,6 @@
                         </VisualStateManager.VisualStateGroups>
 
                         <Canvas IsHitTestVisible="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            
                             <Ellipse x:Name="ClickEllipse" Fill="{TemplateBinding Feedback}" Opacity="0" 
                                      Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=RippleSize}" 
                                      Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=RippleSize}" 
@@ -297,7 +296,7 @@
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
                         </Trigger>
-                        
+
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsBounce" Value="true"></Condition>
@@ -330,7 +329,7 @@
                                                     </EasingDoubleKeyFrame.EasingFunction>
                                                 </EasingDoubleKeyFrame>
                                             </DoubleAnimationUsingKeyFrames>
-                                            
+
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Pin" BeginTime="0:0:1"
                                                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
                                                 <DoubleAnimationUsingKeyFrames.RepeatBehavior>
@@ -371,7 +370,7 @@
                                 </BeginStoryboard>
                             </MultiTrigger.EnterActions>
                         </MultiTrigger>
-                        
+
                         <Trigger Property="IsDefault" Value="true">
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
@@ -493,9 +492,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-
-
+    
     <Style TargetType="{x:Type local:Transitioner}">
         <Setter Property="ClipToBounds" Value="True" />
         <Setter Property="ItemsPanel">
@@ -573,4 +570,158 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style x:Key="FocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="{x:Type local:RenderButton}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:RenderButton}">
+                    <ControlTemplate.Resources>
+                        <LinearGradientBrush x:Key="ProgressBrush" >
+                            <GradientStop Color="White" Offset="0"/>
+                            <GradientStop Color="#eb4b4b" Offset="0.6"/>
+                            <GradientStop Color="#eb4b4b" Offset="1"/>
+                        </LinearGradientBrush>
+                    </ControlTemplate.Resources>
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="VisualStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition From="StateNormal" To="StateRender">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="EllipseRotate"
+                                                     Storyboard.TargetProperty="Angle" 
+                                                     RepeatBehavior="Forever"
+                                                     From="00" To="359" Duration="0:0:0.4" />
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EllipseScale" 
+                                                                       Storyboard.TargetProperty="ScaleX">
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.6"/>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EllipseScale" 
+                                                                       Storyboard.TargetProperty="ScaleY">
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.6"/>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="FEllipseScale" 
+                                                                       Storyboard.TargetProperty="ScaleX">
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="FEllipseScale"
+                                                                       Storyboard.TargetProperty="ScaleY">
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TxtScale" 
+                                                                       Storyboard.TargetProperty="ScaleX">
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.15"/>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"></EasingDoubleKeyFrame>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TxtScale"
+                                                                       Storyboard.TargetProperty="ScaleY">
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.8"></EasingDoubleKeyFrame>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"></EasingDoubleKeyFrame>
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="StateRender" To="StateNormal">
+                                        <Storyboard>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EllipseScale" 
+                                                                       Storyboard.TargetProperty="ScaleX">
+                                                <EasingDoubleKeyFrame KeyTime="0:0:00" Value="0"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EllipseScale" 
+                                                                       Storyboard.TargetProperty="ScaleY">
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="FEllipseScale" 
+                                                                       Storyboard.TargetProperty="ScaleX">
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="FEllipseScale"
+                                                                       Storyboard.TargetProperty="ScaleY">
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TxtScale" 
+                                                                       Storyboard.TargetProperty="ScaleX">
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"></EasingDoubleKeyFrame>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="TxtScale"
+                                                                       Storyboard.TargetProperty="ScaleY">
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:.1" Value="0.8"></EasingDoubleKeyFrame>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"></EasingDoubleKeyFrame>
+                                            </DoubleAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualTransition>
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="StateNormal">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="ScaleX" Storyboard.TargetName="FEllipseScale" To="0"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="ScaleY" Storyboard.TargetName="FEllipseScale" To="0"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="ScaleX" Storyboard.TargetName="EllipseScale" To="0"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="ScaleY" Storyboard.TargetName="EllipseScale" To="0"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="ScaleX" Storyboard.TargetName="TxtScale" To="1"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="ScaleY" Storyboard.TargetName="TxtScale" To="1"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="StateRender">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="ScaleX" Storyboard.TargetName="FEllipseScale" To="1"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="ScaleY" Storyboard.TargetName="FEllipseScale" To="1"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="ScaleX" Storyboard.TargetName="EllipseScale" To="1"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="ScaleY" Storyboard.TargetName="EllipseScale" To="1"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="ScaleX" Storyboard.TargetName="TxtScale" To="0"/>
+                                        <DoubleAnimation Storyboard.TargetProperty="ScaleY" Storyboard.TargetName="TxtScale" To="0"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Border RenderTransformOrigin=".5,.5" Background="#eb4b4b" CornerRadius="15">
+                            <Border.RenderTransform>
+                                <ScaleTransform x:Name="TxtScale" ScaleX="1" ScaleY="1"></ScaleTransform>
+                            </Border.RenderTransform>
+                            <TextBlock x:Name="txt" Text="{TemplateBinding Content}" HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center">
+                            </TextBlock>
+                        </Border>
+                        <Ellipse x:Name="ellipse" Height="{TemplateBinding Height}" Width="{TemplateBinding Height}" 
+                                 VerticalAlignment="Center" RenderTransformOrigin=".5,.5">
+                            <Ellipse.Fill>
+                                <SolidColorBrush Color="#eb4b4b" Opacity="1"></SolidColorBrush>
+                            </Ellipse.Fill>
+                            <Ellipse.RenderTransform>
+                                <ScaleTransform x:Name="FEllipseScale" ScaleX="0" ScaleY="0"></ScaleTransform>
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+                        <Ellipse x:Name="tranellipse" Height="10" Width="10" Stroke="{DynamicResource ProgressBrush}"
+                                 VerticalAlignment="Center" RenderTransformOrigin=".5 ,.5">
+                            <Ellipse.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform x:Name="EllipseScale" ScaleX="0" ScaleY="0"></ScaleTransform>
+                                    <RotateTransform x:Name="EllipseRotate" Angle="00"></RotateTransform>
+                                </TransformGroup>
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
 </ResourceDictionary>
