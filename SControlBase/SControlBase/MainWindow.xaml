@@ -6,20 +6,25 @@
         xmlns:local="clr-namespace:SControlBase"
         xmlns:propertys="clr-namespace:SControlBase.Propertys"
         xmlns:demo="clr-namespace:SControlBase.Demo"
+        xmlns:wpf="clr-namespace:WpfPresentationControl;assembly=WpfPresentationControl"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="300" Width="600">
     <Window.Resources>
         <ResourceDictionary >
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Themes/TextBoxStyle.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="pack://application:,,,/SControlBase;component/Themes/ButtonStyle.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="pack://application:,,,/SControlBase;component/Themes/ScheduleSliderStyle.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/SControlBase;component/Themes/MovetreeItemStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid>
-        <!--<Button Content="dinji" Height="20" Width="50"></Button>-->
-        <local:Transitioner Grid.Row="1" SelectedIndex="0" AutoApplyTransitionOrigins="True">
+    <Canvas x:Name="grid">
+        <wpf:STreeView x:Name="treeItem" Margin="100" Height="300" Width="450" ItemContainerStyle="{StaticResource DefaultItem}">
+        </wpf:STreeView>
+        <!--<local:MouseMoveControl  Height="50" Width="50" AllowDrop="True" HorizontalAlignment="Right"></local:MouseMoveControl>-->
+        
+        <!--<local:Transitioner Grid.Row="1" SelectedIndex="0" AutoApplyTransitionOrigins="True">
             <local:TransitionerSlide OpeningEffect="{local:TransitionEffect FadeIn}">
             <demo:TransitionsOne></demo:TransitionsOne>
             </local:TransitionerSlide>
@@ -27,9 +32,9 @@
             <demo:UserControl1></demo:UserControl1>
             </local:TransitionerSlide>
             <demo:TransitionsOne></demo:TransitionsOne>
-        </local:Transitioner>
+        </local:Transitioner>-->
         
-    </Grid>
+    </Canvas>
     <!--<StackPanel  VerticalAlignment="Center">
         <Slider Style="{StaticResource MaterialDesignDiscreteSlider}" Minimum="0" Maximum="100" x:Name="Demo"></Slider>
     </StackPanel>-->

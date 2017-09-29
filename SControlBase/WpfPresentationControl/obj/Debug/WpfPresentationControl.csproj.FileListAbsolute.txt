@@ -1,0 +1,12 @@
+F:\SWPFControlBase\MyControl\SControlBase\WpfPresentationControl\bin\Debug\WpfPresentationControl.dll
+F:\SWPFControlBase\MyControl\SControlBase\WpfPresentationControl\bin\Debug\WpfPresentationControl.pdb
+F:\SWPFControlBase\MyControl\SControlBase\WpfPresentationControl\obj\Debug\GeneratedInternalTypeHelper.g.cs
+F:\SWPFControlBase\MyControl\SControlBase\WpfPresentationControl\obj\Debug\WpfPresentationControl_MarkupCompile.cache
+F:\SWPFControlBase\MyControl\SControlBase\WpfPresentationControl\obj\Debug\WpfPresentationControl_MarkupCompile.lref
+F:\SWPFControlBase\MyControl\SControlBase\WpfPresentationControl\obj\Debug\Themes\Generic.baml
+F:\SWPFControlBase\MyControl\SControlBase\WpfPresentationControl\obj\Debug\WpfPresentationControl.g.resources
+F:\SWPFControlBase\MyControl\SControlBase\WpfPresentationControl\obj\Debug\WpfPresentationControl.Properties.Resources.resources
+F:\SWPFControlBase\MyControl\SControlBase\WpfPresentationControl\obj\Debug\WpfPresentationControl.csproj.GenerateResource.Cache
+F:\SWPFControlBase\MyControl\SControlBase\WpfPresentationControl\obj\Debug\WpfPresentationControl.dll
+F:\SWPFControlBase\MyControl\SControlBase\WpfPresentationControl\obj\Debug\WpfPresentationControl.pdb
+F:\SWPFControlBase\MyControl\SControlBase\WpfPresentationControl\obj\Debug\WpfPresentationControl.csprojResolveAssemblyReference.cache

@@ -102,6 +102,9 @@
     <Compile Include="HintProxyFabric.PasswordBox.cs" />
     <Compile Include="HintProxyFabric.TextBox.cs" />
     <Compile Include="Interface\IHintProxy.cs" />
+    <Compile Include="MouseMoveControl.cs" />
+    <Compile Include="MoveTreeItem.cs" />
+    <Compile Include="MoveTreeView.cs" />
     <Compile Include="NotEmptyValidationRules.cs" />
     <Compile Include="RenderButton.cs" />
     <Compile Include="Ripple.cs" />
@@ -134,6 +137,7 @@
     <Compile Include="Transitions\TransitionEffectBase.cs" />
     <Compile Include="Transitions\TransitionEffectKind.cs" />
     <Compile Include="Transitions\Transitioner.cs" />
+    <Compile Include="TreeItemMoveAssist.cs" />
     <Compile Include="ValidationAssist.cs" />
     <Compile Include="ScaleHost.cs" />
     <Compile Include="SmartHint.cs" />
@@ -165,6 +169,10 @@
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\MovetreeItemStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\ScheduleSliderStyle.xaml">
       <SubType>Designer</SubType>
@@ -221,7 +229,12 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\WpfPresentationControl\WpfPresentationControl.csproj">
+      <Project>{ff3bf778-0ce2-4c7a-93e5-215470ef5327}</Project>
+      <Name>WpfPresentationControl</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\demo.png" />
   </ItemGroup>

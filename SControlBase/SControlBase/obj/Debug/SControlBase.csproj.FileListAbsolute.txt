@@ -81,4 +81,7 @@ F:\SWPFControlBase\MyControl\SControlBase\SControlBase\obj\Debug\Transform\Viewp
 F:\SWPFControlBase\MyControl\SControlBase\SControlBase\obj\Debug\SControlBase.g.resources
 F:\SWPFControlBase\MyControl\SControlBase\SControlBase\obj\Debug\SControlBase.Properties.Resources.resources
 F:\SWPFControlBase\MyControl\SControlBase\SControlBase\obj\Debug\SControlBase.csproj.GenerateResource.Cache
+F:\SWPFControlBase\MyControl\SControlBase\SControlBase\obj\Debug\Themes\MovetreeItemStyle.baml
 F:\SWPFControlBase\MyControl\SControlBase\SControlBase\obj\Debug\SControlBase.csprojResolveAssemblyReference.cache
+F:\SWPFControlBase\MyControl\SControlBase\SControlBase\bin\Debug\WpfPresentationControl.dll
+F:\SWPFControlBase\MyControl\SControlBase\SControlBase\bin\Debug\WpfPresentationControl.pdb
