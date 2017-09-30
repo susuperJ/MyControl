@@ -9,4 +9,3 @@ F:\SWPFControlBase\MyControl\SControlBase\WpfPresentationControl\obj\Debug\WpfPr
 F:\SWPFControlBase\MyControl\SControlBase\WpfPresentationControl\obj\Debug\WpfPresentationControl.csproj.GenerateResource.Cache
 F:\SWPFControlBase\MyControl\SControlBase\WpfPresentationControl\obj\Debug\WpfPresentationControl.dll
 F:\SWPFControlBase\MyControl\SControlBase\WpfPresentationControl\obj\Debug\WpfPresentationControl.pdb
-F:\SWPFControlBase\MyControl\SControlBase\WpfPresentationControl\obj\Debug\WpfPresentationControl.csprojResolveAssemblyReference.cache

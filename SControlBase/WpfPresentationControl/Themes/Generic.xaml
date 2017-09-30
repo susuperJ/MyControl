@@ -25,7 +25,9 @@
                             <ItemsPresenter x:Name="items"/>
                         </ScrollViewer>
                     </Border>
-                        <StackPanel x:Name="Snapshoot" HorizontalAlignment="Center" VirtualizingStackPanel.IsVirtualizing="True" Orientation="Horizontal" Visibility="Collapsed">
+                        <Canvas>
+                        <StackPanel x:Name="Snapshoot" HorizontalAlignment="Center" VirtualizingStackPanel.IsVirtualizing="True" 
+                                    Orientation="Horizontal" Visibility="Collapsed" Opacity="0.8">
                             <Path x:Name="ExpandPath" Data="{StaticResource TreeArrow}" Fill="Transparent" Stroke="#FF989898" 
                                   HorizontalAlignment="Center" Margin="0 5 10 0">
                                 <Path.RenderTransform>
@@ -34,6 +36,7 @@
                             </Path>
                             <TextBlock Text="{TemplateBinding SelectText}" HorizontalAlignment="Center"></TextBlock>
                         </StackPanel>
+                        </Canvas>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">

@@ -49,10 +49,9 @@ namespace WpfPresentationControl
     public class STreeView : TreeView
     {
         private TreeDateDemo _selectItem;
-        private TreeViewItem _targetItem;
         private StackPanel _moveSnapshoot;
         ObservableCollection<TreeDateDemo> _coll;
-        private bool _IsDown=false;
+        private bool _isMoveState=true;
         static STreeView()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(STreeView), new FrameworkPropertyMetadata(typeof(STreeView)));
@@ -87,64 +86,89 @@ namespace WpfPresentationControl
         {
             var d= e.Source;
             base.OnMouseLeftButtonDown(e);
+            
         }
         protected override void OnMouseLeave(MouseEventArgs e)
         {
-            //if (_IsDown)
-            //{
-            //    _selectItem.IsSelected = false;
-            //    this._selectItem = null;
-            //}
+            if (_selectItem != null)
+            {
+                _selectItem.IsSelected = false;
+                this._selectItem = null;
+            }
+            _moveSnapshoot.Visibility = Visibility.Collapsed;
+            
             base.OnMouseLeave(e);
         }
         protected override void OnSelectedItemChanged(RoutedPropertyChangedEventArgs<object> e)
         {
-            if (_selectItem == null)
+
+            if (e.NewValue != null)
             {
                 _selectItem = e.NewValue as TreeDateDemo;
-                _IsDown = true;
-                _moveSnapshoot.Visibility = Visibility.Visible;
-                this.SelectText = _selectItem.Header;
-                foreach (var item in _coll)
-                {
-                    if(item!=_selectItem)
+            }
+            else if (e.OldValue != null)
+            {
+                _selectItem = e.OldValue as TreeDateDemo;
+            }
+            else
+            {
+                _selectItem = null;
+            }
+
+           
+            this.SelectText = _selectItem.Header;
+            foreach (var item in _coll)
+            {
+                if (item != _selectItem)
                     item.IsMouseLeftDown = true;
-                }
             }
             base.OnSelectedItemChanged(e);
         }
        
         protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
         {
-            if (_selectItem != null)
+            if (this._moveSnapshoot.Visibility == Visibility.Visible)
             {
-                _IsDown = false;
+                this._moveSnapshoot.Visibility = Visibility.Collapsed;
+                _selectItem.IsExpanded = false;
                 FrameworkElement viewItem = Mouse.DirectlyOver as FrameworkElement;
                 TreeViewItem it = null;
                 GetItemView(viewItem, ref it);
                 if (it == null)
                     return;
                 TreeDateDemo target = it.DataContext as TreeDateDemo;
-                if (target != null&&target!=_selectItem)
+                if (target != null && target != _selectItem)
                 {
                     int odleIndex = _coll.IndexOf(_selectItem);
                     int newIndex = _coll.IndexOf(target);
-                    _coll.Move(odleIndex,newIndex );
+                    _coll.Move(odleIndex, newIndex);
                 }
-                _selectItem.IsSelected = false;
                 foreach (var item in _coll)
                 {
                     item.IsMouseLeftDown = false;
                 }
-                this._selectItem = null;
+            }
+            else
+            {
+                if (_selectItem.IsExpanded)
+                {
+                    _selectItem.IsExpanded = false;
+                }
+                else
+                {
+                    _selectItem.IsExpanded = true;
+                }
             }
             base.OnMouseLeftButtonUp(e);
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            if (_IsDown)
+            if (Mouse.LeftButton==MouseButtonState.Pressed&&_isMoveState)
             {
-                this._moveSnapshoot.RenderTransform = new TranslateTransform(e.GetPosition(null).X, e.GetPosition(null).Y);
+                this._moveSnapshoot.RenderTransform = new TranslateTransform(Mouse.GetPosition(this).X-20, Mouse.GetPosition(this).Y-20);
+                _moveSnapshoot.Visibility = Visibility.Visible;
+                _selectItem.IsSelected = false;
+                _selectItem.IsExpanded = false;
             }
             base.OnMouseMove(e);
         }

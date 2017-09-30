@@ -20,7 +20,7 @@
         </ResourceDictionary>
     </Window.Resources>
     <Canvas x:Name="grid">
-        <wpf:STreeView x:Name="treeItem" Margin="100" Height="300" Width="450" ItemContainerStyle="{StaticResource DefaultItem}">
+        <wpf:STreeView x:Name="treeItem"  Height="280" Width="580" ItemContainerStyle="{StaticResource DefaultItem}">
         </wpf:STreeView>
         <!--<local:MouseMoveControl  Height="50" Width="50" AllowDrop="True" HorizontalAlignment="Right"></local:MouseMoveControl>-->
         

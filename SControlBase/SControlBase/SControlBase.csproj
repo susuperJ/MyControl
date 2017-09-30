@@ -83,6 +83,7 @@
     <Compile Include="ControlzEx\PopupEx.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\HintProxyFabricConverter.cs" />
+    <Compile Include="Converters\MarginConverter.cs" />
     <Compile Include="Converters\MathConverter.cs" />
     <Compile Include="Converters\MathMultipleConverter.cs" />
     <Compile Include="Converters\RangePositionConverter.cs" />

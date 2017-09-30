@@ -29,6 +29,26 @@ namespace WpfPresentationControl
                 OnPropertyChanged(nameof(Header));
             }
         }
+        private bool isExpanded;
+        public bool IsExpanded
+        {
+            get { return isExpanded; }
+            set
+            {
+                isExpanded = value;
+                OnPropertyChanged(nameof(IsExpanded));
+            }
+        }
+        private MarginData margin;
+        public MarginData Margin
+        {
+            get { return margin; }
+            set
+            {
+                margin = value;
+                OnPropertyChanged(nameof(Margin));
+            }
+        }
         private ObservableCollection<TreeDateDemo> childCollection;
         public ObservableCollection<TreeDateDemo> ChildCollection
         {
@@ -64,5 +84,12 @@ namespace WpfPresentationControl
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+    }
+    public struct MarginData
+    {
+       public double LEFT;
+       public double TOP;
+       public double RIGHT;
+       public double BOTTON;
     }
 }
