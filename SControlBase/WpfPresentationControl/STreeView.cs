@@ -51,7 +51,7 @@ namespace WpfPresentationControl
         private TreeDateDemo _selectItem;
         private StackPanel _moveSnapshoot;
         ObservableCollection<TreeDateDemo> _coll;
-        private bool _isMoveState=true;
+       
         static STreeView()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(STreeView), new FrameworkPropertyMetadata(typeof(STreeView)));
@@ -163,7 +163,7 @@ namespace WpfPresentationControl
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            if (Mouse.LeftButton==MouseButtonState.Pressed&&_isMoveState)
+            if (Mouse.LeftButton==MouseButtonState.Pressed&& _selectItem!=null)
             {
                 this._moveSnapshoot.RenderTransform = new TranslateTransform(Mouse.GetPosition(this).X-20, Mouse.GetPosition(this).Y-20);
                 _moveSnapshoot.Visibility = Visibility.Visible;
